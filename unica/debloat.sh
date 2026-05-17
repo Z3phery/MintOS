@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2023 Salvo Giangreco
+# Copyright (C) 2026 Salvo Giangreco, Pascua28, Zepheri.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# UN1CA debloat list
+# MintOS debloat list
 # - Add entries inside the specific partition containing that file (<PARTITION>_DEBLOAT+="")
 # - DO NOT add the partition name at the start of any entry (eg. "/system/dpolicy_system")
 # - DO NOT add a slash at the start of any entry (eg. "/dpolicy_system")
@@ -140,6 +140,10 @@ system/priv-app/SamsungCarKeyFw
 system/priv-app/SamsungPass
 system/priv-app/YourPhone_P1_5
 system/priv-app/Upday
+system/priv-app/GameHome
+system/priv-app/GameOptimizingService
+system/priv-app/GameTools_Dream
+system/priv-app/StickerFaceARAvatar
 "
 
 if [[ "$TARGET_SINGLE_SYSTEM_IMAGE" = "qssi" ]]; then

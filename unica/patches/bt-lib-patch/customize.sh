@@ -1,7 +1,9 @@
 if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
     LOG_STEP_IN "- Extracting libbluetooth_jni.so from com.android.bt.apex"
 
-    [ -d "$TMP_DIR" ] && EVAL "rm -rf \"$TMP_DIR\""
+    if [ -d "$TMP_DIR" ]; then
+        EVAL "rm -rf \"$TMP_DIR\""
+    fi
     mkdir -p "$TMP_DIR"
 
     EVAL "unzip -j \"$WORK_DIR/system/system/apex/com.android.bt.apex\" \"apex_payload.img\" -d \"$TMP_DIR\""
@@ -25,17 +27,15 @@ if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
     LOG_STEP_OUT
 fi
 
-# https://github.com/3arthur6/BluetoothLibraryPatcher/blob/master/hexpatch.sh#L12
-if [ "$SOURCE_API_LEVEL" -eq 33 ]; then
+# Disable VaultKeeper support
+# Before: [tbnz w8, #0, #0xXXXXXX]
+# After: [b #0xXXXXXX]
+if xxd -p -c 0 "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" | grep -q "2897773948050037"; then
     HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-        "6804003528008052" "2a00001428008052"
-elif [ "$SOURCE_API_LEVEL" -eq 34 ]; then
+        "2897773948050037" "289777392a000014"
+elif xxd -p -c 0 "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" | grep -q "183a009048050037"; then
     HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-        "6804003528008052" "2b00001428008052"
-elif [ "$SOURCE_API_LEVEL" -eq 35 ]; then
-    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-        "480500352800805228" "530100142800805228"
-elif [ "$SOURCE_API_LEVEL" -eq 36 ]; then
-    HEX_PATCH "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" \
-        "00122a0140395f01086b00020054" "00122a0140395f01086bde030014"
+        "183a009048050037" "183a00902a000014"
+else
+    ABORT "No known patch available for the supplied libbluetooth_jni.so"
 fi

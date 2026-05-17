@@ -1,0 +1,6 @@
+vendor 0 2000 755 capabilities=0x0
+vendor/lib 0 2000 755 capabilities=0x0
+vendor/etc/init/voip.rc 0 0 644 capabilities=0x0
+vendor/lib/libsamsungVoipResampler.so 0 0 644 capabilities=0x0
+vendor/lib/libsamsungVoipResampler_real.so 0 0 644 capabilities=0x0
+vendor/lib/libvoip_volume_fix.so 0 0 644 capabilities=0x0

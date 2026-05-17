@@ -1,0 +1,4 @@
+id=libcamera_nn_skel
+name=libcamera_nn_skel fix
+author=HackMe
+description=Fix libcamera_nn_skel logs

@@ -128,7 +128,7 @@ ADD_TO_WORK_DIR "pa1qxxx" "system" "system/lib64/libstatslog_nfc.so"
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Adding stock DesktopSystemUI"
-ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/system/priv-app/DesktopSystemUI"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/priv-app/DesktopSystemUI"
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Adding r9qxxx biometric blobs"
