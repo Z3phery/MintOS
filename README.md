@@ -1,39 +1,15 @@
-<h1 align="center">
-  <img loading="lazy" src="readme-res/banner.png"/>
-</h1>
-<p align="center">
-  <a href="https://github.com/yagzie/NERV/blob/paradigm/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/yagzie/NERV?style=for-the-badge&logo=github"/></a>
-  <a href="https://github.com/yagzie/NERV/commits/paradigm"><img loading="lazy" src="https://img.shields.io/github/last-commit/yagzie/NERV/paradigm?style=for-the-badge"/></a>
-  <a href="https://github.com/yagzie/NERV/stargazers"><img loading="lazy" src="https://img.shields.io/github/stars/yagzie/NERV?style=for-the-badge"/></a>
-  <a href="https://github.com/yagzie/NERV/graphs/contributors"><img loading="lazy" src="https://img.shields.io/github/contributors/yagzie/NERV?style=for-the-badge"/></a>
-  <a href="https://github.com/yagzie/NERV/actions/workflows/build.yml"><img loading="lazy" src="https://img.shields.io/github/actions/workflow/status/yagzie/NERV/build.yml?style=for-the-badge"/></a>
-</p>
-<p align="center">UN1CA <i>(/ˈu.ni.ka/)</i> is a work-in-progress custom firmware for Samsung Galaxy devices.</p>
+![MintOS Banner](readme-res/banner.png)
 
-<p align="center">
-  <a href="https://t.me/unicarom">💬 UN1CA Telegram</a>
-</p>
+# What is MintOS?
 
-<p align="center">
-  <a href="https://t.me/SE_NERV">💬 NERV Telegram</a>
-</p>
-
-# What is UN1CA?
-UN1CA is a work-in-progress custom firmware for Samsung Galaxy devices. It's based on the latest and greatest iteration of Samsung's UX and it also includes additional features and tweaks to ensure the best possible experience out of the box.
-Its build system allows to automatically download/extract the firmware, apply the required patches and generates a flashable zip package for the specified device.
-
-Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
-
-# What is NERV?
-NERV is a fork of UN1CA; to make the build system work with One UI 7, we are aiming for an UN1CA-like experience with what we can do. All changes have been made under GPLv3, if you see any problems about credits at repo, please kindly report to me at Telegram, XDA or email. 
+MintOS is a fork of Nerv (Un1ca); is a work-in-progress custom firmware for Samsung Galaxy devices. It's based on the latest and greatest iteration of Samsung's UX and it also includes additional features and tweaks to ensure the best possible experience out of the box. Its build system allows to automatically download/extract the firmware, apply the required patches and generates a flashable zip package for the specified device.
 
 # Features
 - Based on the latest Samsung devices firmware:
-  - Galaxy S23 (Paradigm)
-  - Galaxy S23 FE (Paradigm)
-  - Galaxy A73 5G (Fun)
-- Galaxy AI support
+  - Galaxy S23+ (Paradigm)
+- Full Galaxy AI support
 - App Lock Support
+- Adaptive color
 - High end animations
 - Screenshots from Secure Apps support
 - ASKS disabled 
@@ -44,6 +20,7 @@ NERV is a fork of UN1CA; to make the build system work with One UI 7, we are aim
 - Picture remaster support
 - Object, shadow and reflection eraser support
 - Image clipper support
+- Fbe v1 and Fbe v2 support
 - Smart Suggestions widget
 - Samsung Now Brief support
 - Multi user support
@@ -64,6 +41,9 @@ This project is licensed under the terms of the [GNU General Public License v3.0
 
 # Credits
 A big thanks goes to the following for their invaluable contributions in no particular order:
+- **[pascua28](https://github.com/pascua28)** for the creation of MintOS
+- **[salvogiangri](https://github.com/salvogiangri)** for the un1ca repository and patches
+- **[vaultzie](https://github.com/vaultzie)** for the Nerv repository on which this project is based
 - **[ShaDisNX255](https://github.com/ShaDisNX255)** for his help, time and for his [NcX ROM](https://github.com/ShaDisNX255/NcX_Stock) which inspired this project
 - **[DavidArsene](https://github.com/DavidArsene)** for his help and time
 - **[paulowesll](https://github.com/paulowesll)** for his help and support
@@ -74,6 +54,3 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **[Bobert10](https://t.me/bobert10)** for the NERV banner
 - **[All Kangers]** for making me laugh with your rebranded repos with no difference
 - *All the UN1CA project contributors and testers ❤️*
-
-# Stargazers over time
-[![Stargazers over time](https://starchart.cc/yagzie/NERV.svg)](https://starchart.cc/yagzie/NERV)
