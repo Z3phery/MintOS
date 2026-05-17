@@ -1,0 +1,4 @@
+ 0 2000 755 capabilities=0x0
+vendor/lib/rfsa 0 2000 755 capabilities=0x0
+vendor/lib/rfsa/adsp 0 2000 755 capabilities=0x0
+vendor/lib/rfsa/adsp/libcamera_nn_skel.so 0 0 644 capabilities=0x0
