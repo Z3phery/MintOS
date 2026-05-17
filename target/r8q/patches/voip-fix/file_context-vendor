@@ -1,0 +1,6 @@
+/vendor u:object_r:vendor_file:s0
+/vendor/lib u:object_r:vendor_file:s0
+/vendor/etc/init/voip\.rc u:object_r:vendor_configs_file:s0
+/vendor/lib/libsamsungVoipResampler\.so u:object_r:same_process_hal_file:s0
+/vendor/lib/libsamsungVoipResampler_real\.so u:object_r:same_process_hal_file:s0
+/vendor/lib/libvoip_volume_fix\.so u:object_r:same_process_hal_file:s0

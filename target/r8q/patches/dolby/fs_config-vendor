@@ -1,0 +1,5 @@
+0 2000 755 capabilities=0x0
+vendor/etc 0 2000 755 capabilities=0x0
+vendor/etc/audio_policy_configuration.xml 0 0 644 capabilities=0x0
+vendor/etc/dolby 0 2000 755 capabilities=0x0
+vendor/etc/dolby/dax-default.xml 0 0 644 capabilities=0x0
