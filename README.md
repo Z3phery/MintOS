@@ -1,4 +1,4 @@
-![MintOS Banner](readme-res/banner.png)
+![MintOS Banner](readme-res/MintOS-banner.png)
 
 # What is MintOS?
 
