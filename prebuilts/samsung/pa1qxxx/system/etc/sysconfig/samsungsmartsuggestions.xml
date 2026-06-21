@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.telephonyui" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.retriever" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.moments" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.visionintelligence" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.intellivoiceservice" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.contacts" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.contacts" />
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.media" />
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.telephony" />
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.scs" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.providers.media" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.providers.media.module" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.providers.media" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.mediasearch" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.ssco" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.phone" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.dialer" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.homestar" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.sidegesturepad" />
 	<!-- Calendar -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.calendar" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.sec.android.app.myfiles" />
@@ -32,12 +40,14 @@
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.scloud" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.contacts" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.calendar" />		
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.calendar.synctasks" />		
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.chrome" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.bookmarkprovider" />		
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.settings" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.email.provider" />
 	<!-- Gallery -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.sec.android.gallery3d" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.sec.android.gallery3d.provider2.album_group" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.widget.pictureframe" />	
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.media.module" />
 	<!-- Camera -->
@@ -74,12 +84,19 @@
 	<!-- Samsung Wallet -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.spay" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.spaymini" />	
-	<!-- Moments -->
-	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.gms" />	
 	<!-- Settings Intelligence -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.settings.intelligence" />
+	<!-- Wearable Manager -->
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.waterplugin" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.heartplugin" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.wearable.watch6plugin" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.wearable.watch7plugin" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.wearable.watchuniteplugin" />
 	<!-- Drawing Assist -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.sketchbook" />
+	
+	<!-- FwCraft(Search) -->	
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.searchcraft" />
 	<!-- Live translate -->
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.sr.nmt.apps.t2t.languagepack.kozh" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.sr.nmt.apps.t2t.languagepack.kovi" />
@@ -460,10 +477,13 @@
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.ce" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.mcfds" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.moneta" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.pdetestagent" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.providers.downloads" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.fmm" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.storyservice" />
 	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.faceservice" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.aicore" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.qawsed.helper" />
 	
 	<!-- ========================================================================================= -->
     <!--  PDC/Moneta/DataPlatform START -->
@@ -488,12 +508,14 @@
     <!--    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.phone" />-->
     <!--    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.providers.contacts" />-->
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.callassistant" />
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.callassistant.callrecordingprovider" />
     <!-- NOTIFICATION -->
     <!--    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.android.systemui" />-->
     <!-- BIXBY_TEXT_CALL -->
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.incallui" />
     <!-- VOICE_RECORDER_STT -->
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.sec.android.app.voicenote" />
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.sec.android.app.voicenote.data.VNAIProvider" />
     <!-- NOTES -->
     <!--    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.notes" />-->
 	<!-- BIXBY AGENT -->
@@ -552,6 +574,16 @@
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.spotify.music" />
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.tencent.qqmusic" />
     <allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.apps.messaging" />
-	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.googlequicksearchbox" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.googlequicksearchbox" />	
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.google.android.gms" />
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.locnall.KimGiSa" />	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.kakao.navi.nowbrief.provider" />	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.naverfin.payapp" />
     <!-- } Rune.NOW_BRIEF -->
+    <!-- Samsung Assistant -->
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.sreminder" />
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.smartprovider" />
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.app.searchwidget" />
+	<!-- Social Composer -->
+    <allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.smartcopywriting" />
+	<!-- AI Core(CHN) -->
+	<allow-association target="com.samsung.android.smartsuggestions" allowed="com.samsung.android.offline.languagemodel.chn" />
 </config>

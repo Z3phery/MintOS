@@ -1,5 +1,9 @@
 <permissions>
     <privapp-permissions package="com.samsung.android.smartsuggestions">
+		<permission name="android.permission.GET_TOP_ACTIVITY_INFO" />
+		<permission name="com.samsung.permission.ACCESS_KEEP_STORAGE" />
+		<permission name="android.permission.ACCESS_CONTEXTUAL_SEARCH" />
+		<permission name="com.samsung.permission.CAPTURE" />
 		<permission name="com.samsung.android.weather.permission.READ_DANGEROUS_PROVIDER" />
         <permission name="android.permission.BIND_TEXTCLASSIFIER_SERVICE" />
         <permission name="android.permission.BIND_CONTENT_CAPTURE_SERVICE" />
@@ -115,5 +119,16 @@
 		<permission name="com.samsung.android.app.cocktailbarservice.permission.ACCESS_PANEL" />
 		<permission name="android.permission.READ_SEARCH_INDEXABLES" />
         <permission name="android.permission.START_TASKS_FROM_RECENTS" />
+        <!-- Gen-IE API -->
+        <permission name="com.samsung.android.permission.GENAI_RECLAIM" />
+        <permission name="com.samsung.android.permission.SEM_GLOBAL_SEARCH" />
+		<!-- Temporarily permission -->
+		<permission name="com.samsung.android.permission.EXTRACT_SMARTCLIP_DATA" />
+        <!-- SA Request Access Token -->
+        <permission name="com.msc.openprovider.OpenContentProvider.READ_CONTENT"/>
+		<!--When the screen is off, the process is always set to backgroundProcessGroup.-->
+		<permission name="com.samsung.android.permission.SSRM_NOTIFICATION_PERMISSION"/>
+        <!-- PDI Settings - Manage Personal Data -->
+        <permission name="android.permission.SET_BIOMETRIC_DIALOG_ADVANCED" />
     </privapp-permissions>
 </permissions>
