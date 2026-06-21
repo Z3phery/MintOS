@@ -1,62 +1,52 @@
-From 0eb9cf5d28bd852c386c61b29c7cadc27f3cd5db Mon Sep 17 00:00:00 2001
-From: BlackMesa123 <giangrecosalvo9@gmail.com>
-Date: Tue, 19 Dec 2023 14:59:11 +0100
+From 8f3aae194f364270111c25e178c30452d6f16cf4 Mon Sep 17 00:00:00 2001
+From: Salvo Giangreco <giangrecosalvo9@gmail.com>
+Date: Fri, 17 Oct 2025 11:57:50 +0200
 Subject: [PATCH] Introduce CscFeatureHooks
 
 ---
- .../android/feature/SemCscFeature.smali       |  98 ++++-
- .../io/mesalabs/unica/CscFeatureHooks.smali   | 345 ++++++++++++++++++
- 2 files changed, 431 insertions(+), 12 deletions(-)
+ .../android/os/SemSystemProperties.smali      |  10 +
+ .../android/feature/SemCscFeature.smali       | 107 ++++-
+ .../io/mesalabs/unica/CscFeatureHooks.smali   | 380 ++++++++++++++++++
+ 3 files changed, 477 insertions(+), 20 deletions(-)
  create mode 100644 smali_classes6/io/mesalabs/unica/CscFeatureHooks.smali
 
-diff --git a/smali_classes5/com/samsung/android/feature/SemCscFeature.smali b/smali_classes5/com/samsung/android/feature/SemCscFeature.smali
-index 7a29d842..b1f910bb 100644
---- a/smali_classes5/com/samsung/android/feature/SemCscFeature.smali
-+++ b/smali_classes5/com/samsung/android/feature/SemCscFeature.smali
-@@ -2727,6 +2727,19 @@
+diff --git a/smali_classes3/android/os/SemSystemProperties.smali b/smali_classes3/android/os/SemSystemProperties.smali
+index d40468a0..1238450f 100644
+--- a/smali_classes3/android/os/SemSystemProperties.smali
++++ b/smali_classes3/android/os/SemSystemProperties.smali
+@@ -45,6 +45,15 @@
+ .method public static whitelist getCountryCode()Ljava/lang/String;
+     .locals 2
  
-     const/4 v0, 0x0
- 
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetBooleanHook(Ljava/lang/String;)Ljava/lang/Boolean;
++    invoke-static {}, Lio/mesalabs/unica/CscFeatureHooks;->onGetCountryCode()Ljava/lang/String;
 +
-+    move-result-object v1
++    move-result-object v0
 +
-+    if-eqz v1, :cond_0
-+
-+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
-+
-+    move-result v0
++    if-eqz v0, :cond_0
 +
 +    goto :goto_0
 +
 +    :cond_0
-     :try_start_0
-     iget-object v1, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+     const-string/jumbo v0, "ro.csc.country_code"
  
-@@ -2736,7 +2749,7 @@
+     const-string v1, ""
+@@ -53,6 +62,7 @@
  
-     check-cast v1, Ljava/lang/String;
+     move-result-object v0
  
--    if-eqz v1, :cond_0
-+    if-eqz v1, :cond_1
- 
-     invoke-static {v1}, Ljava/lang/Boolean;->parseBoolean(Ljava/lang/String;)Z
- 
-@@ -2746,7 +2759,8 @@
- 
-     return v0
- 
--    :cond_0
-+    :cond_1
 +    :goto_0
-     return v0
+     return-object v0
+ .end method
  
-     :catch_0
-@@ -2758,6 +2772,19 @@
- .method public whitelist getBoolean(Ljava/lang/String;Z)Z
-     .locals 2
+diff --git a/smali_classes6/com/samsung/android/feature/SemCscFeature.smali b/smali_classes6/com/samsung/android/feature/SemCscFeature.smali
+index 41421590..0138a30f 100644
+--- a/smali_classes6/com/samsung/android/feature/SemCscFeature.smali
++++ b/smali_classes6/com/samsung/android/feature/SemCscFeature.smali
+@@ -1873,6 +1873,19 @@
+ .method public whitelist getBoolean(Ljava/lang/String;)Z
+     .locals 4
  
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetBooleanHook(Ljava/lang/String;)Ljava/lang/Boolean;
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetBoolean(Ljava/lang/String;)Ljava/lang/Boolean;
 +
 +    move-result-object v0
 +
@@ -64,77 +54,96 @@ index 7a29d842..b1f910bb 100644
 +
 +    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
 +
-+    move-result p2
++    move-result p0
 +
-+    goto :goto_0
++    return p0
 +
 +    :cond_0
-     :try_start_0
-     iget-object v0, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+     const-string v0, "[getBoolean] tag : "
  
-@@ -2767,7 +2794,7 @@
+     const/4 v1, 0x0
+@@ -1884,7 +1897,7 @@
  
-     check-cast v0, Ljava/lang/String;
+     sget-boolean v2, Lcom/samsung/android/feature/SemCscFeature;->DEBUG:Z
  
--    if-eqz v0, :cond_0
-+    if-eqz v0, :cond_1
+-    if-eqz v2, :cond_0
++    if-eqz v2, :cond_1
  
-     invoke-static {v0}, Ljava/lang/Boolean;->parseBoolean(Ljava/lang/String;)Z
+     const-string v2, "SemCscFeature"
  
-@@ -2777,7 +2804,8 @@
+@@ -1906,8 +1919,8 @@
  
-     return v1
+     invoke-static {v2, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
  
 -    :cond_0
+-    if-eqz p0, :cond_1
 +    :cond_1
-+    :goto_0
-     return p2
++    if-eqz p0, :cond_2
+ 
+     invoke-static {p0}, Ljava/lang/Boolean;->parseBoolean(Ljava/lang/String;)Z
+ 
+@@ -1918,13 +1931,26 @@
+     return p0
  
      :catch_0
-@@ -2811,6 +2839,19 @@
+-    :cond_1
++    :cond_2
+     return v1
+ .end method
  
-     const/4 v0, -0x1
+ .method public whitelist getBoolean(Ljava/lang/String;Z)Z
+     .locals 3
  
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetIntHook(Ljava/lang/String;)Ljava/lang/Integer;
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetBoolean(Ljava/lang/String;)Ljava/lang/Boolean;
 +
-+    move-result-object v1
++    move-result-object v0
 +
-+    if-eqz v1, :cond_0
++    if-eqz v0, :cond_0
 +
-+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
++    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
 +
-+    move-result v0
++    move-result p0
 +
-+    goto :goto_0
++    return p0
 +
 +    :cond_0
+     const-string v0, "[getBoolean] tag : "
+ 
      :try_start_0
-     iget-object v1, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+@@ -1934,7 +1960,7 @@
  
-@@ -2820,7 +2861,7 @@
- 
-     check-cast v1, Ljava/lang/String;
+     sget-boolean v1, Lcom/samsung/android/feature/SemCscFeature;->DEBUG:Z
  
 -    if-eqz v1, :cond_0
 +    if-eqz v1, :cond_1
  
-     invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+     const-string v1, "SemCscFeature"
  
-@@ -2830,7 +2871,8 @@
+@@ -1962,8 +1988,8 @@
  
-     return v0
+     invoke-static {v1, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
  
 -    :cond_0
+-    if-eqz p0, :cond_1
 +    :cond_1
-+    :goto_0
-     return v0
++    if-eqz p0, :cond_2
+ 
+     invoke-static {p0}, Ljava/lang/Boolean;->parseBoolean(Ljava/lang/String;)Z
+ 
+@@ -1974,7 +2000,7 @@
+     return p0
  
      :catch_0
-@@ -2842,6 +2884,19 @@
- .method public whitelist getInt(Ljava/lang/String;I)I
-     .locals 2
+-    :cond_1
++    :cond_2
+     return p2
+ .end method
  
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetIntHook(Ljava/lang/String;)Ljava/lang/Integer;
+@@ -2001,6 +2027,19 @@
+ .method public whitelist getInt(Ljava/lang/String;)I
+     .locals 4
+ 
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetInt(Ljava/lang/String;)Ljava/lang/Integer;
 +
 +    move-result-object v0
 +
@@ -142,70 +151,109 @@ index 7a29d842..b1f910bb 100644
 +
 +    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
 +
-+    move-result v1
++    move-result p0
 +
-+    goto :goto_0
++    return p0
 +
 +    :cond_0
-     :try_start_0
-     iget-object v0, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+     const-string v0, "[getInt] tag : "
  
-@@ -2851,7 +2906,7 @@
+     const/4 v1, -0x1
+@@ -2012,7 +2051,7 @@
  
-     check-cast v0, Ljava/lang/String;
+     sget-boolean v2, Lcom/samsung/android/feature/SemCscFeature;->DEBUG:Z
  
--    if-eqz v0, :cond_0
-+    if-eqz v0, :cond_1
+-    if-eqz v2, :cond_0
++    if-eqz v2, :cond_1
  
-     invoke-static {v0}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+     const-string v2, "SemCscFeature"
  
-@@ -2859,9 +2914,10 @@
-     :try_end_0
-     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+@@ -2034,8 +2073,8 @@
  
-+    :goto_0
-     return v1
+     invoke-static {v2, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
  
 -    :cond_0
+-    if-eqz p0, :cond_1
 +    :cond_1
-     return p2
++    if-eqz p0, :cond_2
+ 
+     invoke-static {p0}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+ 
+@@ -2046,13 +2085,26 @@
+     return p0
  
      :catch_0
-@@ -2935,6 +2991,15 @@
+-    :cond_1
++    :cond_2
+     return v1
+ .end method
  
-     const-string v0, ""
+ .method public whitelist getInt(Ljava/lang/String;I)I
+     .locals 3
  
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetStringHook(Ljava/lang/String;)Ljava/lang/String;
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetInt(Ljava/lang/String;)Ljava/lang/Integer;
 +
-+    move-result-object v1
++    move-result-object v0
 +
-+    if-eqz v1, :cond_0
++    if-eqz v0, :cond_0
 +
-+    return-object v1
++    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
++
++    move-result p0
++
++    return p0
 +
 +    :cond_0
-     :try_start_0
-     iget-object v1, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+     const-string v0, "[getInt] tag : "
  
-@@ -2946,11 +3011,11 @@
-     :try_end_0
-     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+     :try_start_0
+@@ -2062,7 +2114,7 @@
+ 
+     sget-boolean v1, Lcom/samsung/android/feature/SemCscFeature;->DEBUG:Z
  
 -    if-eqz v1, :cond_0
 +    if-eqz v1, :cond_1
  
-     return-object v1
+     const-string v1, "SemCscFeature"
+ 
+@@ -2090,8 +2142,8 @@
+ 
+     invoke-static {v1, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
  
 -    :cond_0
+-    if-eqz p0, :cond_1
 +    :cond_1
-     return-object v0
++    if-eqz p0, :cond_2
+ 
+     invoke-static {p0}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+ 
+@@ -2102,7 +2154,7 @@
+     return p0
  
      :catch_0
-@@ -2962,6 +3027,15 @@
- .method public whitelist getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-     .locals 1
+-    :cond_1
++    :cond_2
+     return p2
+ .end method
  
-+    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetStringHook(Ljava/lang/String;)Ljava/lang/String;
+@@ -2169,6 +2221,12 @@
+ .method public whitelist getString(Ljava/lang/String;)Ljava/lang/String;
+     .locals 4
+ 
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetString(Ljava/lang/String;)Ljava/lang/String;
++
++    move-result-object v0
++
++    if-nez v0, :cond_1
++
+     const-string v0, ""
+ 
+     const-string v1, "[getString] tag : "
+@@ -2217,6 +2275,15 @@
+ .method public whitelist getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     .locals 3
+ 
++    invoke-static {p1}, Lio/mesalabs/unica/CscFeatureHooks;->onGetString(Ljava/lang/String;)Ljava/lang/String;
 +
 +    move-result-object v0
 +
@@ -214,29 +262,41 @@ index 7a29d842..b1f910bb 100644
 +    return-object v0
 +
 +    :cond_0
-     :try_start_0
-     iget-object v0, p0, Lcom/samsung/android/feature/SemCscFeature;->mFeatureList:Ljava/util/Hashtable;
+     const-string v0, "[getString] tag : "
  
-@@ -2973,11 +3047,11 @@
+     :try_start_0
+@@ -2226,7 +2293,7 @@
+ 
+     sget-boolean v1, Lcom/samsung/android/feature/SemCscFeature;->DEBUG:Z
+ 
+-    if-eqz v1, :cond_0
++    if-eqz v1, :cond_1
+ 
+     const-string v1, "SemCscFeature"
+ 
+@@ -2256,13 +2323,13 @@
      :try_end_0
      .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
  
--    if-eqz v0, :cond_0
-+    if-eqz v0, :cond_1
- 
-     return-object v0
- 
 -    :cond_0
+-    if-eqz p0, :cond_1
 +    :cond_1
-     return-object p2
++    if-eqz p0, :cond_2
+ 
+     return-object p0
  
      :catch_0
+-    :cond_1
++    :cond_2
+     return-object p2
+ .end method
+ 
 diff --git a/smali_classes6/io/mesalabs/unica/CscFeatureHooks.smali b/smali_classes6/io/mesalabs/unica/CscFeatureHooks.smali
 new file mode 100644
-index 00000000..89ac4631
+index 00000000..37d44bdc
 --- /dev/null
 +++ b/smali_classes6/io/mesalabs/unica/CscFeatureHooks.smali
-@@ -0,0 +1,345 @@
+@@ -0,0 +1,380 @@
 +.class public final Lio/mesalabs/unica/CscFeatureHooks;
 +.super Ljava/lang/Object;
 +.source "CscFeatureHooks.java"
@@ -253,6 +313,8 @@ index 00000000..89ac4631
 +        }
 +    .end annotation
 +.end field
++
++.field private static final blacklist CAMERA_PACKAGE_NAME:Ljava/lang/String; = "com.sec.android.app.camera"
 +
 +.field private static final blacklist DEBUG:Z = false
 +
@@ -309,25 +371,7 @@ index 00000000..89ac4631
 +
 +    invoke-virtual {v0, v3, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
-+    const-string v3, "CscFeature_Gallery_SupportAliveZoom"
-+
-+    sget-object v4, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-+
-+    invoke-virtual {v0, v3, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-+
 +    const-string v3, "CscFeature_Setting_EnableHwVersionDisplay"
-+
-+    sget-object v4, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-+
-+    invoke-virtual {v0, v3, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-+
-+    const-string v3, "CscFeature_Setting_SupportMenuSmartTutor"
-+
-+    sget-object v4, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
-+
-+    invoke-virtual {v0, v3, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-+
-+    const-string v3, "CscFeature_SystemUI_SupportPowerOffLock"
 +
 +    sget-object v4, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
 +
@@ -357,19 +401,13 @@ index 00000000..89ac4631
 +
 +    invoke-virtual {v1, v0, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
-+    const-string v0, "CscFeature_Setting_SupportELabelManufacturer"
-+
-+    invoke-virtual {v1, v0, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-+
-+    const-string v0, "CscFeature_SmartManager_ConfigSubFeatures"
-+
-+    const-string v3, "appdatacleaner|trafficmanager_auto|fake_base_station|badappnoti|trafficmanager|applock|riskcontrol|newdataplan"
-+
-+    invoke-virtual {v1, v0, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-+
 +    const-string v0, "CscFeature_VoiceCall_ConfigRecording"
 +
-+    const-string v3, "RecordingAllowed"
++    const-string v4, "RecordingAllowed"
++
++    invoke-virtual {v1, v0, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
++
++    const-string v0, "CscFeature_SmartManager_ConfigSubFeatures"
 +
 +    invoke-virtual {v1, v0, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 +
@@ -394,13 +432,13 @@ index 00000000..89ac4631
 +    return-void
 +.end method
 +
-+.method public static blacklist dlog(Ljava/lang/String;)V
++.method private static blacklist dlog(Ljava/lang/String;)V
 +    .locals 0
 +
 +    return-void
 +.end method
 +
-+.method public static blacklist onGetBooleanHook(Ljava/lang/String;)Ljava/lang/Boolean;
++.method public static blacklist onGetBoolean(Ljava/lang/String;)Ljava/lang/Boolean;
 +    .locals 3
 +
 +    sget-object v0, Lio/mesalabs/unica/CscFeatureHooks;->BOOLEAN_FEATURES:Ljava/util/HashMap;
@@ -461,7 +499,64 @@ index 00000000..89ac4631
 +    return-object v0
 +.end method
 +
-+.method public static blacklist onGetIntHook(Ljava/lang/String;)Ljava/lang/Integer;
++.method public static blacklist onGetCountryCode()Ljava/lang/String;
++    .locals 3
++
++    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
++
++    move-result-object v0
++
++    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
++
++    move-result v1
++
++    if-nez v1, :cond_0
++
++    const-string v1, "com.sec.android.app.camera"
++
++    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-eqz v0, :cond_0
++
++    const-string v0, "USA"
++
++    goto :goto_0
++
++    :cond_0
++    const/4 v0, 0x0
++
++    :goto_0
++    if-eqz v0, :cond_1
++
++    new-instance v1, Ljava/lang/StringBuilder;
++
++    const-string v2, "Spoofing SemSystemProperties.getCountryCode() to \""
++
++    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
++
++    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++
++    move-result-object v1
++
++    const-string v2, "\""
++
++    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++
++    move-result-object v1
++
++    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
++
++    move-result-object v1
++
++    invoke-static {v1}, Lio/mesalabs/unica/CscFeatureHooks;->dlog(Ljava/lang/String;)V
++
++    :cond_1
++    return-object v0
++.end method
++
++.method public static blacklist onGetInt(Ljava/lang/String;)Ljava/lang/Integer;
 +    .locals 3
 +
 +    sget-object v0, Lio/mesalabs/unica/CscFeatureHooks;->INTEGER_FEATURES:Ljava/util/HashMap;
@@ -522,7 +617,7 @@ index 00000000..89ac4631
 +    return-object v0
 +.end method
 +
-+.method public static blacklist onGetStringHook(Ljava/lang/String;)Ljava/lang/String;
++.method public static blacklist onGetString(Ljava/lang/String;)Ljava/lang/String;
 +    .locals 3
 +
 +    sget-object v0, Lio/mesalabs/unica/CscFeatureHooks;->STRING_FEATURES:Ljava/util/HashMap;
@@ -583,5 +678,5 @@ index 00000000..89ac4631
 +    return-object v0
 +.end method
 -- 
-2.46.0
+2.51.0
 
