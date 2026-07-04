@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║              MintOS OTA Update Manifest                      ║
+    ║  GitHub: https://github.com/SAKMOTO/MintOS (branch: r8q)    ║
+    ║                                                              ║
+    ║  HOW TO RELEASE AN UPDATE (No coding needed!):               ║
+    ║  1. Upload ROM ZIP to Google Drive / Gofile / GitHub         ║
+    ║  2. Get the direct download link (see format below)          ║
+    ║  3. Open this file on GitHub → click pencil ✏️ to edit      ║
+    ║  4. Change: buildversion (+1), directurl, versionname, log   ║
+    ║  5. Click "Commit changes"                                    ║
+    ║  6. ✅ All users notified automatically within hours!         ║
+    ╚══════════════════════════════════════════════════════════════╝
+
+    GOOGLE DRIVE LINK FORMAT:
+      Your share link: https://drive.google.com/file/d/FILE_ID/view
+      Direct link:     https://drive.google.com/uc?export=download&id=FILE_ID
+
+    Example:
+      Share:  https://drive.google.com/file/d/1XF5Y1BJjh5SHxGor5oy58KvVlTRuTefN/view
+      Direct: https://drive.google.com/uc?export=download&id=1XF5Y1BJjh5SHxGor5oy58KvVlTRuTefN
+-->
+<update>
+
+    <!-- ROM name shown in the app -->
+    <romname>Mint OS</romname>
+
+    <!-- Version label shown to the user -->
+    <versionname>1.0</versionname>
+
+    <!--
+        *** MOST IMPORTANT — INCREMENT THIS BY 1 EVERY RELEASE ***
+        The app compares this number to the installed version.
+        If XML number > installed number → show update notification.
+        Current = 1, Next release = 2, Then 3, etc.
+    -->
+    <buildversion>1</buildversion>
+
+    <!-- STABLE | BETA | RC -->
+    <releasetype>STABLE</releasetype>
+
+    <!-- Month/year label -->
+    <releaseversion>June 2026</releaseversion>
+    <releasevariant>Official</releasevariant>
+    <semversion>1.0.0</semversion>
+
+    <!-- Security Patch Level date -->
+    <spl>2026-06-01</spl>
+
+    <!-- Android base version -->
+    <android>14</android>
+
+    <!--
+        PASTE YOUR DOWNLOAD LINK HERE.
+
+        Google Drive example:
+          https://drive.google.com/uc?export=download&amp;id=1XF5Y1BJjh5SHxGor5oy58KvVlTRuTefN
+
+        NOTE: In XML files, & must be written as &amp;
+    -->
+    <directurl>https://raw.githubusercontent.com/SAKMOTO/MintOS/r8q/ota/large_update.zip</directurl>
+
+    <!-- Mirror / backup link (optional) -->
+    <httpurl></httpurl>
+
+    <!-- File size in bytes — set to 0 to skip size check -->
+    <filesize>15002458</filesize>
+
+    <!-- MD5 hash — set to zeros to skip integrity check -->
+    <checkmd5>5387df74ad5e28b87d71fc397869efee</checkmd5>
+
+    <!-- Changelog shown in the app when update is available -->
+    <log>
+• Mint OS v1.0 — Initial Release
+• Samsung Galaxy S20 FE (r8q) — Snapdragon variant
+• June 2026 Security Patches
+• MintOS custom branding applied
+• Performance and stability improvements
+    </log>
+
+    <developer>Mint OS Team</developer>
+    <websiteurl>https://t.me/s20fesnapdragon</websiteurl>
+    <donateurl></donateurl>
+    <forumurl></forumurl>
+    <discordurl></discordurl>
+    <gitissues>https://github.com/SAKMOTO/MintOS/issues</gitissues>
+    <gitdiscussion>https://github.com/Z3phery/MintOS.git</gitdiscussion>
+    <addonscount>0</addonscount>
+
+</update>
