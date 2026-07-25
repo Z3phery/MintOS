@@ -78,7 +78,7 @@
 
         <component name="AP" tempType="LRP" >
             <limiter name="CPUFreqMax" step="0" temp="350:380:450:470" value="-1:1747200:1747200:1516800" />
-            <limiter name="GPUFreqMax" step="0" temp="350:380:450:470" value="-1:490:490:400"  />
+            <limiter name="GPUFreqMax" step="0" temp="350:380:450:470" value="-1:441:441:400"  />
             <limiter name="AppInstallDelay" value="5000" />
             <limiter name="BackgroundCpuset" temp="360" gap="20" value="-1:100:200:300" />
         </component>
@@ -118,12 +118,12 @@
 
         <scenario name="AppStart" tempType="LRP" priority="2" >
             <limiter name="CPUFreqMax" cond="for_temporary" temp="450"         value="-1:1747200"   />
-            <limiter name="GPUFreqMax" cond="for_temporary" temp="450"         value="-1:490" />
+            <limiter name="GPUFreqMax" cond="for_temporary" temp="450"         value="-1:441" />
         </scenario>
 
         <scenario name="Badge" tempType="LRP" priority="2" >
             <limiter name="CPUFreqMax" cond="for_temporary" temp="450"         value="-1:1747200"   />
-            <limiter name="GPUFreqMax" cond="for_temporary" temp="450"         value="-1:490" />
+            <limiter name="GPUFreqMax" cond="for_temporary" temp="450"         value="-1:441" />
         </scenario>
 
         <scenario name="WakeUp" tempType="LRP" priority="2" >
@@ -218,7 +218,7 @@
 
         <scenario name="HeavyLoadApp" tempType="SKIN" priority="1">
             <limiter name="CPUFreqMax" temp="340" value="-1:1632000:1516800:1075200:854400" />
-            <limiter name="GPUFreqMax"                        value="400" />
+            <limiter name="GPUFreqMax"                        value="305" />
             <limiter name="Brightness" temp="410:430:530:550" value="224:169:169:104" />
         </scenario>
 
