@@ -1,0 +1,4 @@
+id=hdr_fix
+name=HDR patch for r8q
+author=Zepheri
+description=Fix HDR issue in camera
