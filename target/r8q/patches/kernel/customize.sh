@@ -1,6 +1,6 @@
-KERNEL_REPO="https://github.com/pascua28/kernel_samsung_r8q/releases/latest/download"
+KERNEL_REPO="https://github.com/Z3phery/kernel_samsung_r8q/releases/latest/download"
 
-LOG_STEP_IN "- Downloading Paradigm kernel"
+LOG_STEP_IN "- Downloading Not kernel"
 if [ -f "$WORK_DIR/kernel/boot.img" ]; then
     rm -f "$WORK_DIR/kernel/boot.img"
 fi

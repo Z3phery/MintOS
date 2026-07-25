@@ -1,4 +1,4 @@
 id=kernel
-name=Upstream Kernel
-author=pascua28
+name=Add Not Kernel 
+author=doubledashdot, zepheri
 description=Adds kernel with OneUI 8.0 support
