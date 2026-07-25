@@ -1,0 +1,4 @@
+id=singletake
+name=Single Take Fix 
+author=salvogiangri, zepheri
+description= Upgrade Single Take AI components by replacing legacy filters.
