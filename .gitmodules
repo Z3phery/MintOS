@@ -22,10 +22,6 @@
 	path = external/signapk
 	url = https://github.com/salvogiangri/signapk.git
 	ignore = dirty
-[submodule "target/a53x/patches/vendor"]
-	path = target/a53x/patches/vendor
-	url = https://github.com/Ksawlii/unica_target_a53x_patches_vendor.git
-	ignore = dirty
 [submodule "external/smali"]
 	path = external/smali
 	url = https://github.com/google/smali
